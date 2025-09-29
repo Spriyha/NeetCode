@@ -27,7 +27,7 @@
 // 1 <= nums[i] <= 1000  
  
 #include <iostream>
-#include<bits//stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
 class Solution {

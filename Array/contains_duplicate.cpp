@@ -25,7 +25,7 @@
 
 //1.BruteForce
 //TC -- o(n^2)
-//SC -- 
+//SC -- o(1) because of variables n,a,i,j
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
@@ -47,7 +47,7 @@ public:
 
 //2.Optimized 
 //Tc -- sort of array > o(nlogn),loop > o(n) so total >>> o(nlogn)
-//SC --  no space complexity
+//SC -- depends on sort algo being used
 
 class Solution {
 public:
@@ -61,13 +61,14 @@ public:
             }
         }
         return false;
-    }
+    }    
 };
 
 //3.Optimized
 //Tc -- o(n)
 //SC -- o(n)
 #include<iostream.h>
+#include<bits/stdc++.h>
 using namespace std;
 class Solution {
 public:
