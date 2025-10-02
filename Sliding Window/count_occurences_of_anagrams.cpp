@@ -92,3 +92,42 @@ class Solution {
         return count;
     }
 };
+
+
+//3.Optimized TC to O(N^2)
+//SC : O(26)
+
+// User function template for C++
+class Solution {
+  public:
+    int search(string &pat, string &txt) {
+        // code here
+        int n = txt.size();
+        int m = pat.size();
+        int count = 0 ;
+        vector<int>freq2(26,0);
+        for(int k = 0;k<m;k++){
+            freq2[pat[k] - 'a']++;
+        }
+        for(int i = 0;i<n;i++){
+            vector<int>freq(26,0);
+            for(int j = i;j<n;j++){
+                freq[txt[j]-'a']++;
+                if((j-i+1)==m){
+                    
+                    int flag = 1;
+                    for(int k = 0;k<26;k++){
+                        if(freq[k]!=freq2[k]){
+                            flag = 0;
+                            break;
+                        }
+                    }
+                    if(flag){
+                       count++; 
+                    }
+                }
+            }
+        }
+        return count;
+    }
+};
