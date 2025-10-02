@@ -131,3 +131,45 @@ class Solution {
         return count;
     }
 };
+
+
+//4.Optimized 
+//TC : O(N)
+//SC : O(26)
+
+class Solution {
+  public:
+    int search(string &pat, string &txt) {
+        // code here
+        int m = pat.size();
+        int n = txt.size();
+        int count = 0;
+        int i = 0,j=0;
+        vector<int>freq(26,0),freq2(26,0);
+        for(int k = 0;k<m;k++){
+            freq2[pat[k]-'a']++;
+        }
+        while(j<n){
+            freq[txt[j]-'a']++;
+            if((j-i+1)<m){
+                j++;
+            }
+            else if ((j-i+1)==m){
+                int flag = 1;
+                for(int k = 0;k<26;k++){
+                    if(freq[k]!=freq2[k]){
+                        flag = 0;
+                        break;
+                    }
+                }
+                if(flag){
+                    count++;
+                }
+               freq[txt[i]-'a']--;
+               i++;
+               j++;
+            }
+        }
+        return count;
+    }
+};
