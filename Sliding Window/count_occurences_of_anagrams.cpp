@@ -55,3 +55,40 @@ class Solution {
     }
 };
 
+//2.solution ,still TC is O(N^3) but reduces number of operation for calculating frequency of pattern
+//SC : O(N)
+
+
+class Solution {
+  public:
+    int search(string &pat, string &txt) {
+        // code here
+        int n = txt.size();
+        int m = pat.size();
+        int count = 0 ;
+        map<int,int>freq2;
+        for(int k = 0;k<m;k++){
+            freq2[pat[k]]++;
+        }
+        for(int i = 0;i<n;i++){
+            map<int,int>freq;
+            for(int j = i;j<n;j++){
+                freq[txt[j]]++;
+                if((j-i+1)==m){
+                    
+                    int flag = 1;
+                    for(auto it : freq){
+                        if((it.second != freq2[it.first])){
+                            flag = 0;
+                            break;
+                        }
+                    }
+                    if(flag){
+                       count++; 
+                    }
+                }
+            }
+        }
+        return count;
+    }
+};
