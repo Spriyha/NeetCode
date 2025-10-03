@@ -31,12 +31,38 @@
 // -105 <= arr[i] <= 105
 // 1 <= k <= arr.size()
 
-//1.BruteForce
-//TC : O(N^2)
-//SC : O(1)
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
+
+//1.BruteForce
+//TC : O(N^2)
+//SC : O(1)
+
+class Solution {
+  public:
+    vector<int> firstNegInt(vector<int>& arr, int k) {
+        // write code here
+        int n = arr.size();
+        vector<int>ans;
+        for(int i = 0;i<n;i++){
+            int flag = 0;
+            for(int j = i;j<n;j++){
+                if(arr[j]<0 && flag == 0){
+                    flag = arr[j];
+                }
+                if((j-i+1)==k){
+                    ans.push_back(flag);
+                }
+            }
+        }
+        return ans;
+    }
+};
+
+//2.BruteForce
+//TC : O(N^2)
+//SC : O(1)
 
 class Solution {
   public:
