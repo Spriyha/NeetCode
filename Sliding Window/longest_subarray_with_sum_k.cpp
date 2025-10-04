@@ -83,3 +83,32 @@ class Solution {
     }
 };
 
+//3.Optimized
+//TC : O(N) 
+//SC : O(N)
+
+class Solution {
+  public:
+    int longestSubarray(vector<int>& arr, int k) {
+        // code here
+        int n = arr.size();
+        int sum = 0;
+        int res = 0;
+        map<int,int>mp;
+        mp[0] = -1;
+        for(int j = 0 ;j<n;j++){
+            sum += arr[j];
+            if(sum == k){
+                res = max(res,(j+1));
+            }
+            int rem = sum - k ;
+            if(mp.find(rem)!=mp.end()){
+                res = max(res,j-mp[rem]);
+            }
+            if(mp.find(sum)==mp.end()){
+                mp[sum] = j;
+            }
+        }
+        return res;
+    }
+};
