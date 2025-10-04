@@ -45,3 +45,33 @@ class Solution {
     }
 };
 
+//2.Optimized
+//TC : O(N)
+//SC : O(1)
+
+
+/*You are required to complete the function*/
+class Solution {
+  public:
+    int findMaxProduct(vector<int>& arr, int k) {
+        // code here
+        int n = arr.size();
+        int i = 0 , j= 0;
+        int prod = 1;
+        int res = 0;
+        while(j<n){
+            prod *= arr[j];
+            if((j-i+1)<k){
+                j++;
+            }
+            else if ((j-i+1)==k){
+                res = max(prod,res);
+                prod /= arr[i];
+                i++;
+                j++;
+                
+            }
+        }
+        return res;
+    }
+};
