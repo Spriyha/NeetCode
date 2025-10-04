@@ -44,3 +44,42 @@ class Solution {
         return res;
     }
 };
+
+
+//2.Optimized - But only will work for positive integers
+//TC : O(N^2)
+//SC : O(1)
+
+
+class Solution {
+  public:
+    int longestSubarray(vector<int>& arr, int k) {
+        // code here
+        int n = arr.size();
+        int i = 0, j = 0;
+        int res = 0;
+        int sum = 0;
+        while(j<n){
+            sum += arr[j];
+            if(sum < k){
+                j++;
+            }
+            else if (sum == k){
+                res = max(res,(j-i+1));
+                j++;
+            }
+            else if (sum > k){
+                while((i <= j) && (sum > k)){
+                    sum -= arr[i];
+                    i++;
+                }
+                if(sum == k){
+                    res = max(res,(j-i+1));
+                }
+                j++;
+            }
+        }
+        return res;
+    }
+};
+
