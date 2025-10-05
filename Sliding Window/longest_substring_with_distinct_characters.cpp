@@ -43,3 +43,42 @@ class Solution {
         return res;
     }
 };
+
+//2.Optimized
+//TC : O(N)
+//SC : O(N)
+
+class Solution {
+  public:
+    int longestUniqueSubstr(string &s) {
+        // code here
+        int n = s.size();
+        int i = 0,j = 0;
+        int res = 0;
+        map<char,int>freq;
+        while(j<n){
+            freq[s[j]]++;
+            if(freq.size()<(j-i+1)){
+                while(freq.size()<(j-i+1)){
+                    freq[s[i]]--;
+                    if(freq[s[i]]==0){
+                        freq.erase(s[i]);
+                    }
+                    i++;
+                }
+                if(freq.size()==(j-i+1)){
+                    res = max(res,(j-i+1));
+                }
+                j++;
+            }
+            else if (freq.size()==(j-i+1)){
+                 res = max(res,(j-i+1));
+                 j++;
+            }
+            
+            
+        }
+        return res;
+    }
+};
+
