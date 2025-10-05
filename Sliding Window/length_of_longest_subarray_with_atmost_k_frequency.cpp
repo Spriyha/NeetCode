@@ -59,3 +59,37 @@ public:
         return res;
     }
 };
+
+
+//2.Optimized 
+//TC : O(N)
+//SC : O(N)
+
+class Solution {
+public:
+    int maxSubarrayLength(vector<int>& nums, int k) {
+        int i = 0,j = 0;
+        int n = nums.size();
+        int res = 0;
+        map<int,int>freq;
+        while(j<n){
+            freq[nums[j]]++;
+            if(freq[nums[j]]>k){
+                while(freq[nums[j]]>k){
+                    freq[nums[i]]--;
+                    if(freq[nums[i]]==0){
+                        freq.erase(nums[i]);
+                    }
+                    i++;
+                }
+                res = max(res,(j-i+1));
+                j++;
+            }
+            else{
+                res = max(res,(j-i+1));
+                j++;
+            }
+        }
+        return res;
+    }
+};
