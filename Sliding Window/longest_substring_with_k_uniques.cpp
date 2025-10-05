@@ -45,3 +45,41 @@ class Solution {
     }
 };
 
+//2.Optimized 
+//TC : O(N)
+//SC : O(N)
+
+class Solution {
+  public:
+    int longestKSubstr(string &s, int k) {
+        // code here
+        int n = s.size();
+        int i = 0,j = 0;
+        map<char,int>freq;
+        int res = 0;
+        while(j<n){
+            freq[s[j]]++;
+            if(freq.size()<k){
+                j++;
+            }
+            else if (freq.size()==k){
+                res = max(res,(j-i+1));
+                j++;
+            }
+            else if (freq.size()>k){
+                while(freq.size()>k){
+                    freq[s[i]]--;
+                    if(freq[s[i]]==0){
+                        freq.erase(s[i]);
+                    }
+                    i++;
+                }
+                if(freq.size()==k){
+                    res = max(res,(j-i+1));
+                }
+                j++;
+            }
+        }
+        return res == 0 ? -1 : res ;
+    }
+};
