@@ -44,4 +44,37 @@ public:
     }
 };
 
- 
+//2.Optimized
+//TC : O(N)
+//SC : O(1)
+
+class Solution {
+public:
+    int findMaxConsecutiveOnes(vector<int>& nums) {
+        int i = 0,j=0;
+        int n = nums.size();
+        int res = 0;
+        int count = 0;
+        while(j<n){
+            if(nums[j]==0){
+                count++;
+            }
+            if(count == 0){
+                res = max(res,(j-i+1));
+                j++;
+            }
+            else{
+                while(count > 0){
+                    if(nums[i]==0){
+                        count--;
+                    }
+                    i++;
+
+                }
+                res = max(res,(j-i+1));
+                j++;
+            }
+        }
+        return res;
+    }
+};
