@@ -43,3 +43,32 @@ public:
         return res==INT_MAX ? 0 : res;
     }
 };
+
+//2.Optimized 
+//TC : O(N)
+//SC : O(1)
+
+class Solution {
+public:
+    int minSubArrayLen(int target, vector<int>& nums) {
+        int n = nums.size();
+        int j = 0, i=0;
+        int sum = 0;
+        int res = INT_MAX;
+        while(j<n){
+            sum += nums[j];
+            if(sum<target){
+                j++;
+            }
+            else if (sum >= target){
+                while(sum >= target){
+                    res = min(res,(j-i+1));
+                    sum -= nums[i];
+                    i++;
+                }
+                j++;
+            }
+        }
+        return res == INT_MAX ? 0: res;
+    }
+};
