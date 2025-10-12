@@ -60,3 +60,39 @@ public:
         return count;
     }
 };
+
+//2.Optimized
+//TC : O(N)
+//SC : O(26)
+
+class Solution {
+public:
+    int countGoodSubstrings(string s) {
+        int n = s.size();
+        int i = 0, j = 0;
+        vector<int>freq(26,0);
+        int count = 0;
+        while(j<n){
+            freq[s[j]-'a']++;
+            if((j-i+1)<3){
+                j++;
+            }
+            else if ((j-i+1)==3){
+                int flag = 1;
+                for(int k = 0;k<26;k++){
+                    if(freq[k]>1){
+                        flag = 0;
+                        break;
+                    }
+                }
+                if(flag){
+                    count++;
+                }
+                 freq[s[i]-'a']--;
+                 i++;
+                 j++;
+            }
+        }
+        return count;
+    }
+};
