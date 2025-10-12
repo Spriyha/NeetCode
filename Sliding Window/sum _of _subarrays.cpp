@@ -38,3 +38,20 @@ class Solution {
        return res; 
     }
 };
+
+//2.Optmized
+//TC : O(N)
+//SC : O(1)
+
+class Solution {
+  public:
+    int subarraySum(vector<int>& arr) {
+        // code here
+        int n = arr.size();
+        int res = 0;
+        for(int i = 0; i<n;i++){
+            res += (n-i)*(i+1)*arr[i];
+        }
+        return res;
+    }
+};
