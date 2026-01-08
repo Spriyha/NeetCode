@@ -38,3 +38,43 @@ class Solution {
         return ans;
     }
 };
+
+
+
+//2.Optimized 
+//TC : O(N)
+//SC : O(1)
+
+
+class Solution {
+  public:
+    int count(vector<int>& arr,int k){
+        int n = arr.size();
+        int i = 0, j = 0;
+        int ans = 0;
+        int count = 0 ;
+        while(j<n){
+            if(arr[j] & 1){
+                count++;
+            }
+            if(count<k){
+                j++;
+            }
+            else {
+                while(count == k && i<=j){
+                    ans += n-j;
+                    if(arr[i]&1){
+                        count--;
+                    }
+                    i++;
+                }
+                j++;
+            }
+        }
+        return ans;
+    }
+    int countSubarrays(vector<int>& arr, int k) {
+        // code here
+        return count(arr,k) - count(arr,k+1);
+    }
+};
