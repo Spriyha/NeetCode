@@ -38,6 +38,11 @@
 // 0 <= nums[i] <= 50
 // 0 <= val <= 100
  
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+
 //1.TwoPointer 
 //TC : O(N)
 //SC : O(1)
