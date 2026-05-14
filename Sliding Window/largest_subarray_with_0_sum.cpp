@@ -48,7 +48,7 @@ class Solution {
 };
 
 
-//2.Optimized
+//2.Optimized -- PREFIX SUM
 //TC: O(N)
 //SC: O(N)
 
