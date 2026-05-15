@@ -33,7 +33,7 @@
 using namespace std;
 
 //1.bruteForce
-//TC: O(N^2)
+//TC: O(2^n)
 //SC: O(N)
 
 

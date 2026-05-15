@@ -23,7 +23,7 @@
 using namespace std;
 
 //1.BruteForce:Recursion
-//TC: o(n^2)
+//TC: o(2^n)
 //SC: O(N)
 
 class Solution {
